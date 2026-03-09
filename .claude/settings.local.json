@@ -11,7 +11,8 @@
       "Bash(cd /Users/marko/Documents/GitHub/marko-pro/portfolio && npm run build 2>&1)",
       "Bash(git add portfolio/components/sections/Contact.tsx && git commit -m \"fix: remove email CTA, add ALWAYS READY message\" && git push)",
       "Bash(git add portfolio/components/sections/Hero.tsx && git commit -m \"fix: remove WORK/CONTACT buttons from hero\" && git push)",
-      "Bash(cd /Users/marko/Documents/GitHub/marko-pro/portfolio && npx tsc --noEmit 2>&1)"
+      "Bash(cd /Users/marko/Documents/GitHub/marko-pro/portfolio && npx tsc --noEmit 2>&1)",
+      "Bash(git add portfolio/components/sections/Hero.tsx && git commit -m \"fix: hide WORK button from hero\" && git push)"
     ]
   }
 }
