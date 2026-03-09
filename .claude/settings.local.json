@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest portfolio --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" 2>&1)",
+      "Bash(echo \"no\" | npx create-next-app@latest portfolio --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --no-turbopack 2>&1)",
+      "Bash(cd /Users/marko/Documents/GitHub/marko-pro/portfolio && npm install framer-motion clsx 2>&1)",
+      "Bash(npm run build 2>&1)"
+    ]
+  }
+}
