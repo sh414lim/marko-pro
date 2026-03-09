@@ -23,25 +23,32 @@ export default function Timeline({ careers }: TimelineProps) {
         {careers.map((career, i) => (
           <motion.div
             key={career.company}
+            className="relative"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.2 }}
           >
             {/* 점 */}
-            <div className="absolute left-0 flex items-center justify-center" style={{ top: 0 }}>
+            <div className="absolute -left-8 top-1 flex items-center justify-center">
               {career.current ? (
-                <span className="relative flex h-6 w-6 items-center justify-center -left-0">
+                <span className="relative flex h-6 w-6 items-center justify-center">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-accent/40 timeline-current" />
                   <span className="relative inline-flex h-3 w-3 rounded-full bg-accent" />
                 </span>
               ) : (
-                <span className="h-3 w-3 rounded-full bg-muted/60 border-2 border-muted mt-1.5" />
+                <span className="h-3 w-3 rounded-full bg-muted/60 border-2 border-muted" />
               )}
             </div>
 
-            <div className="ml-2">
-              <p className="font-mono text-xs text-muted mb-1">{career.period}</p>
+            <div>
+              {/* 기간 + 총 재직 기간 */}
+              <div className="flex items-center gap-2 mb-1">
+                <span className="font-mono text-xs text-muted">{career.period}</span>
+                <span className="font-mono text-xs text-accent/60 border border-accent/20 px-1.5 py-0.5">
+                  {career.duration}
+                </span>
+              </div>
               <p className="font-korean font-bold text-primary text-base leading-tight">
                 {career.company}
               </p>

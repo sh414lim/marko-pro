@@ -70,7 +70,7 @@ export default function About() {
               className="font-korean leading-relaxed text-primary/70 mb-10"
               style={{ fontSize: "clamp(18px, 2vw, 24px)" }}
             >
-              웹과 앱, 기획부터 배포까지 .
+              웹과 앱, 기획부터 배포까지 혼자 끝냅니다.
             </p>
 
             {/* 개인정보 — AGE 제거 */}

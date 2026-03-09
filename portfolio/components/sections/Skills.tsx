@@ -5,11 +5,14 @@ import FadeInView from '@/components/animations/FadeInView';
 import { skills } from '@/data/skills';
 import type { Skills } from '@/types';
 
+// 핵심 기술 — 크게 표시
+const CORE_SKILLS = new Set(['React', 'Next.js', 'TypeScript', 'Flutter', 'Dart', 'Node.js', 'Tailwind CSS']);
+
 const LEVELS: Record<string, number> = {
-  React: 4, 'Next.js': 4, TypeScript: 4, 'Tailwind CSS': 4, 'Vue.js': 3, 'Vanilla JS': 3,
+  React: 4, 'Next.js': 4, TypeScript: 4, 'Tailwind CSS': 3, 'Vue.js': 2, 'Vanilla JS': 2,
   Flutter: 4, Dart: 4,
-  'Node.js': 3, 'Next.js API Routes': 3, 'Supabase Edge Functions': 3,
-  'Supabase (PostgreSQL)': 3, MySQL: 3, Firebase: 3,
+  'Node.js': 3, 'Next.js API Routes': 2, 'Supabase Edge Functions': 2,
+  'Supabase (PostgreSQL)': 3, MySQL: 3, Firebase: 2,
 };
 
 const PROFICIENCY = [
@@ -28,12 +31,9 @@ const CATEGORY_LABELS: Record<keyof Skills, string> = {
 
 function Dots({ filled, total = 5 }: { filled: number; total?: number }) {
   return (
-    <span className="flex gap-1 items-center">
+    <span className="flex gap-1 items-center shrink-0">
       {Array.from({ length: total }).map((_, i) => (
-        <span
-          key={i}
-          className={`inline-block w-2 h-2 rounded-full ${i < filled ? 'bg-accent' : 'bg-accent/20'}`}
-        />
+        <span key={i} className={`inline-block w-1.5 h-1.5 rounded-full ${i < filled ? 'bg-accent' : 'bg-accent/20'}`} />
       ))}
     </span>
   );
@@ -61,16 +61,21 @@ export default function Skills() {
           {(Object.entries(skills) as [keyof Skills, string[]][]).map(([category, items]) => (
             <FadeInView key={category}>
               <div className="border border-primary/10 p-6 h-full">
-                <h3 className="font-mono text-xs text-accent tracking-widest mb-4">
+                <h3 className="font-mono text-xs text-accent tracking-widest mb-5">
                   {CATEGORY_LABELS[category]}
                 </h3>
-                <div className="flex flex-col gap-3">
-                  {items.map((item) => (
-                    <div key={item} className="flex items-center justify-between">
-                      <span className="font-mono text-sm text-primary">{item}</span>
-                      {LEVELS[item] !== undefined && <Dots filled={LEVELS[item]} />}
-                    </div>
-                  ))}
+                <div className="flex flex-col gap-2">
+                  {items.map((item) => {
+                    const isCore = CORE_SKILLS.has(item);
+                    return (
+                      <div key={item} className="flex items-center justify-between gap-2">
+                        <span className={`font-mono text-primary ${isCore ? 'text-sm font-bold' : 'text-xs text-muted'}`}>
+                          {item}
+                        </span>
+                        {LEVELS[item] !== undefined && <Dots filled={LEVELS[item]} />}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </FadeInView>
@@ -80,7 +85,7 @@ export default function Skills() {
         {/* 숙련도 요약 */}
         <FadeInView>
           <h3 className="font-mono text-xs text-accent tracking-widest mb-6">PROFICIENCY</h3>
-          <div className="flex flex-col gap-5 mb-8">
+          <div className="flex flex-col gap-4 mb-8">
             {PROFICIENCY.map(({ label, dots, tag }) => (
               <div key={label} className="flex items-center gap-4">
                 <span className="font-mono text-sm text-primary w-40 shrink-0">{label}</span>
@@ -93,7 +98,7 @@ export default function Skills() {
           {/* 차별점 */}
           <div className="border-l-2 border-accent pl-4">
             <p className="font-mono text-sm text-primary">
-              iOS · Android 양대 마켓 배포 경험 다수
+              iOS · Android 양대 마켓 직접 배포 — 앱 11개 출시
             </p>
           </div>
         </FadeInView>

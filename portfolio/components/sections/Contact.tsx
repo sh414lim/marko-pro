@@ -62,14 +62,7 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* 준비 완료 메시지 */}
-        <FadeInView delay={0.4}>
-          <p className="font-mono text-white/20 leading-tight" style={{ fontSize: 'clamp(24px, 3.5vw, 44px)' }}>
-            ALWAYS READY.
-          </p>
-        </FadeInView>
-
-        <div className="w-full h-px bg-white/10 mt-16 mb-8" />
+        <div className="w-full h-px bg-white/10 mt-4 mb-8" />
 
         <p className="font-mono text-xs text-white/30 text-center">
           © 2026 임성환. All rights reserved.

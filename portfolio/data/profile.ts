@@ -15,17 +15,20 @@ export const profile: Profile = {
       company: '주식회사 레오핏테크',
       role: '풀스택 개발자',
       period: '2024.12 ~ 2026.03',
+      duration: '1년 4개월',
       current: true,
     },
     {
       company: 'LeoSoft (레오소프트)',
       role: '풀스택 개발자',
       period: '2024.02 ~ 2024.12',
+      duration: '10개월',
     },
     {
       company: 'MiceHub (마이스허브)',
       role: '소프트웨어 엔지니어',
       period: '2021.10 ~ 2024.02',
+      duration: '2년 5개월',
     },
   ],
 };

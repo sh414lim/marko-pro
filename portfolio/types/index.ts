@@ -20,6 +20,7 @@ export interface Career {
   company: string;
   role: string;
   period: string;
+  duration: string;
   current?: boolean;
 }
 

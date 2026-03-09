@@ -176,12 +176,31 @@ export default function Hero() {
             ))}
           </motion.div>
 
-          {/* iOS·Android 뱃지 */}
-          <motion.p
-            className="font-mono text-sm text-accent mb-10"
+          {/* WORK 버튼 하나만 */}
+          <motion.div
+            className="mb-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.0 }}
+          >
+            <a
+              href="#work"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center gap-2 bg-accent text-white font-mono text-sm px-6 py-3 hover:bg-accent-lt transition-colors"
+            >
+              WORK →
+            </a>
+          </motion.div>
+
+          {/* iOS·Android 뱃지 */}
+          <motion.p
+            className="font-mono text-sm text-accent"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
           >
             iOS · Android 양대 마켓 배포 경험
           </motion.p>
