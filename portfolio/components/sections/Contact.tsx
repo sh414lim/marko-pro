@@ -62,16 +62,11 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* 준비 완료 메시지 */}
         <FadeInView delay={0.4}>
-          <motion.a
-            href={`mailto:${profile.email}`}
-            className="inline-flex items-center gap-3 bg-accent text-white font-mono text-sm px-8 py-4"
-            whileHover={{ backgroundColor: '#60A5FA', scale: 1.03 }}
-            transition={{ duration: 0.2 }}
-          >
-            SEND EMAIL →
-          </motion.a>
+          <p className="font-mono text-white/20 leading-tight" style={{ fontSize: 'clamp(24px, 3.5vw, 44px)' }}>
+            ALWAYS READY.
+          </p>
         </FadeInView>
 
         <div className="w-full h-px bg-white/10 mt-16 mb-8" />
