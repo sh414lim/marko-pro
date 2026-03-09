@@ -5,9 +5,9 @@ import FadeInView from '@/components/animations/FadeInView';
 import { profile } from '@/data/profile';
 
 const contactItems = [
-  { icon: '✉', label: 'Email',   value: profile.email,    href: `mailto:${profile.email}` },
-  { icon: '📱', label: 'Phone',   value: profile.phone,    href: `tel:${profile.phone}` },
-  { icon: '📍', label: 'Address', value: profile.location, href: undefined },
+  { label: 'EMAIL',    value: profile.email,    href: `mailto:${profile.email}` },
+  { label: 'PHONE',   value: profile.phone,    href: `tel:${profile.phone}` },
+  { label: 'LOCATION',value: profile.location, href: undefined },
 ];
 
 const titleWords = ["LET'S", 'WORK', 'TOGETHER'];
@@ -39,45 +39,43 @@ export default function Contact() {
           ))}
         </motion.div>
 
-        {/* 구분선 */}
         <div className="w-full h-px bg-white/10 mb-12" />
 
-        {/* 연락처 항목 */}
+        {/* 연락처 — 이모지 없이 텍스트 라벨 */}
         <div className="flex flex-col gap-6 mb-12">
-          {contactItems.map(({ icon, label, value, href }, i) => (
+          {contactItems.map(({ label, value, href }, i) => (
             <FadeInView key={label} delay={i * 0.1}>
-              <div className="flex items-center gap-4">
-                <span className="text-xl w-8 shrink-0">{icon}</span>
-                <div>
-                  <p className="font-mono text-xs text-white/30 mb-0.5">{label}</p>
-                  {href ? (
-                    <a
-                      href={href}
-                      className="font-korean text-base text-white/80 hover:text-white transition-colors"
-                    >
-                      {value}
-                    </a>
-                  ) : (
-                    <p className="font-korean text-base text-white/80">{value}</p>
-                  )}
-                </div>
+              <div className="flex items-baseline gap-4">
+                <span className="font-mono text-xs text-white/30 w-20 shrink-0">{label} —</span>
+                {href ? (
+                  <a
+                    href={href}
+                    className="font-mono text-base text-white/80 hover:text-white transition-colors"
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <span className="font-korean text-base text-white/80">{value}</span>
+                )}
               </div>
             </FadeInView>
           ))}
         </div>
 
-        {/* 준비 메시지 */}
+        {/* CTA */}
         <FadeInView delay={0.4}>
-          <p className="font-display text-white/20 leading-none"
-            style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>
-            ALWAYS READY TO COLLABORATE.
-          </p>
+          <motion.a
+            href={`mailto:${profile.email}`}
+            className="inline-flex items-center gap-3 bg-accent text-white font-mono text-sm px-8 py-4"
+            whileHover={{ backgroundColor: '#60A5FA', scale: 1.03 }}
+            transition={{ duration: 0.2 }}
+          >
+            SEND EMAIL →
+          </motion.a>
         </FadeInView>
 
-        {/* 구분선 */}
         <div className="w-full h-px bg-white/10 mt-16 mb-8" />
 
-        {/* 푸터 카피라이트 */}
         <p className="font-mono text-xs text-white/30 text-center">
           © 2026 임성환. All rights reserved.
         </p>

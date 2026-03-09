@@ -6,7 +6,9 @@
       "Bash(cd /Users/marko/Documents/GitHub/marko-pro/portfolio && npm install framer-motion clsx 2>&1)",
       "Bash(npm run build 2>&1)",
       "Bash(npx tsc --noEmit 2>&1 | head -30)",
-      "Bash(npx tsc --noEmit 2>&1 | head -20)"
+      "Bash(npx tsc --noEmit 2>&1 | head -20)",
+      "Bash(git commit --allow-empty -m \"fix: set nextjs framework preset\" && git push)",
+      "Bash(cd /Users/marko/Documents/GitHub/marko-pro/portfolio && npm run build 2>&1)"
     ]
   }
 }

@@ -10,6 +10,7 @@ export const projects: Project[] = [
     period: '2024.12 ~ 2026.03',
     role: '풀스택 개발 및 기획',
     contribution: 100,
+    platform: 'BOTH',
     overview:
       'React, Next.js 기반 관리자 웹 시스템과 Flutter 기반 모바일 앱을 결합한 체육관 통합 관리 SaaS 플랫폼입니다. 회원 관리, 출석 현황, 매출 통계, FCM 푸시 알림, 실시간 데이터 동기화까지 운영에 필요한 모든 기능을 제공하며, 실 고객사 확보 및 서비스 운영 중입니다.',
     category: ['SaaS', 'Web', 'Mobile'],
@@ -32,8 +33,9 @@ export const projects: Project[] = [
     period: '2024.12 ~ 2026.03',
     role: '기획 및 풀스택 개발',
     contribution: 100,
+    platform: 'APP',
     overview:
-      '사용자 위치 기반으로 주변 체육관을 검색하고 AI 알고리즘으로 맞춤 운동을 추천하는 O2O 플랫폼입니다. 체육관 상담 신청부터 결제, 출석 체크까지 원스톱으로 처리할 수 있으며 Flutter로 개발해 Android / iOS 양대 마켓에 배포했습니다.',
+      '사용자 위치 기반으로 주변 체육관을 검색하고 AI 알고리즘으로 맞춤 운동을 추천하는 O2O 플랫폼입니다.',
     category: ['Mobile', 'AI'],
     tech: ['Flutter', 'Dart', 'Supabase', 'AI API'],
     bullets: [
@@ -55,8 +57,9 @@ export const projects: Project[] = [
     period: '2024.12 ~ 2026.03',
     role: '풀스택 개발',
     contribution: 100,
+    platform: 'APP',
     overview:
-      'QR/NFC 결제를 중심으로 상점 연동, 출석 체크, 스탬프 적립까지 지원하는 O2O 결제 플랫폼입니다. PASS 인증, 네이버 지도 API 기반 위치 정보, WebView UI까지 Flutter 하이브리드 앱으로 구현했습니다.',
+      'QR/NFC 결제를 중심으로 상점 연동, 출석 체크, 스탬프 적립까지 지원하는 O2O 결제 플랫폼입니다.',
     category: ['Mobile', 'O2O'],
     tech: ['Flutter', 'Dart', 'Naver Map API', 'Bloc', 'Provider'],
     bullets: [
@@ -80,8 +83,9 @@ export const projects: Project[] = [
     period: '2024.02 ~ 2024.12',
     role: '풀스택 개발',
     contribution: 100,
+    platform: 'BOTH',
     overview:
-      '골프 레슨 강사와 수강생을 연결하는 O2O 플랫폼으로, 반응형 웹과 Flutter 앱을 모두 제공합니다. 카카오 알림톡 예약 문자, Slack Webhook 모니터링, 스크린 골프장 키오스크 앱, Google Vision OCR 기능까지 포함한 풀스택 프로젝트입니다.',
+      '골프 레슨 강사와 수강생을 연결하는 O2O 플랫폼으로, 반응형 웹과 Flutter 앱을 모두 제공합니다.',
     category: ['Web', 'Mobile', 'O2O'],
     tech: ['React', 'Next.js', 'Node.js', 'Flutter', 'Kakao API', 'Slack API', 'Google Vision'],
     bullets: [
@@ -102,8 +106,9 @@ export const projects: Project[] = [
     period: '2024.02 ~ 2024.12',
     role: '프로젝트 리드, 풀스택 개발',
     contribution: 100,
+    platform: 'BOTH',
     overview:
-      '해외 사용자를 대상으로 한국 정보를 현지 언어로 제공하는 글로벌 서비스 플랫폼입니다. 접속 국가 자동 감지 후 다국어 UI 전환, ChatGPT 기반 뉴스 자동 번역, 실시간 환율 연동, 네이버 클라우드 TTS 음성 기능을 구현했으며, 프로젝트 리드로 기획부터 배포까지 전 과정을 주도했습니다.',
+      '해외 사용자를 대상으로 한국 정보를 현지 언어로 제공하는 글로벌 서비스 플랫폼입니다. 프로젝트 리드로 기획부터 배포까지 전 과정을 주도했습니다.',
     category: ['Web', 'Mobile', 'Global'],
     tech: ['React', 'Next.js', 'Node.js', 'Flutter', 'ChatGPT API', 'Naver Cloud TTS API'],
     bullets: [
@@ -127,8 +132,9 @@ export const projects: Project[] = [
     period: '2024.02 ~ 2024.12',
     role: '풀스택 개발 및 유지보수',
     contribution: 80,
+    platform: 'BOTH',
     overview:
-      'Google Maps API를 활용한 실시간 위치 추적 및 지오펜싱 기반의 키즈케어 플랫폼입니다. Python Selenium으로 학원 데이터를 크롤링해 DB에 적재하고, Flutter 앱과 React/Next.js 웹을 함께 제공합니다.',
+      'Google Maps API를 활용한 실시간 위치 추적 및 지오펜싱 기반의 키즈케어 플랫폼입니다.',
     category: ['Web', 'Mobile'],
     tech: ['React', 'Next.js', 'Flutter', 'Google Maps API', 'Python', 'Selenium'],
     bullets: [
@@ -148,8 +154,9 @@ export const projects: Project[] = [
     period: '2024.02 ~ 2024.12',
     role: '아키텍처 설계 및 개발',
     contribution: 100,
+    platform: 'APP',
     overview:
-      '식재료 물류 관리를 위한 관리자 전용 Flutter 앱입니다. 효율적인 데이터 관리 구조를 직접 설계하였으며, Google Vision API 기반 영수증 OCR 텍스트 추출 기능으로 데이터 입력 자동화를 구현했습니다.',
+      '식재료 물류 관리를 위한 관리자 전용 Flutter 앱입니다. Google Vision API 기반 영수증 OCR로 데이터 입력을 자동화했습니다.',
     category: ['Mobile'],
     tech: ['Flutter', 'Dart', 'Google Vision API', 'Firebase'],
     bullets: [
@@ -168,8 +175,9 @@ export const projects: Project[] = [
     period: '2024.02 ~ 2024.12',
     role: '풀스택 개발',
     contribution: 100,
+    platform: 'BOTH',
     overview:
-      '파충류 전문 e-Commerce 플랫폼으로 Flutter 모바일 앱과 Next.js 웹을 함께 제공합니다. Supabase 인증/DB와 Cafe24 커머스를 연동해 완전한 쇼핑 경험을 구현했습니다.',
+      '파충류 전문 e-Commerce 플랫폼으로 Flutter 모바일 앱과 Next.js 웹을 함께 제공합니다.',
     category: ['e-Commerce', 'Mobile'],
     tech: ['Flutter', 'Supabase', 'Next.js', 'Cafe24'],
     bullets: [
@@ -187,8 +195,9 @@ export const projects: Project[] = [
     period: '2024.02 ~ 2024.12',
     role: '프론트엔드 개발',
     contribution: 100,
+    platform: 'WEB',
     overview:
-      '금융감독원 보이스피싱 예방 캠페인을 위한 인터랙티브 랜딩페이지입니다. GSAP 애니메이션, Howler.js 사운드 효과, tsParticles 파티클로 몰입감 있는 경험을 구현하고, Vite 기반 빌드와 scale-transform 반응형으로 마무리했습니다.',
+      '금융감독원 보이스피싱 예방 캠페인을 위한 인터랙티브 랜딩페이지입니다. GSAP, 사운드, 파티클 효과로 몰입감 있는 경험을 구현했습니다.',
     category: ['Web', 'Landing'],
     tech: ['Vanilla JS', 'GSAP', 'Howler.js', 'tsParticles', 'Vite'],
     bullets: [
@@ -207,8 +216,9 @@ export const projects: Project[] = [
     period: '2021.10 ~ 2024.02',
     role: '풀스택 개발',
     contribution: 100,
+    platform: 'WEB',
     overview:
-      '전시회 및 상담회 티켓 판매를 위한 PG 연동 결제 시스템입니다. 관리자용 결제 관리 프로세스, 행사별 티켓 판매·관리, 실시간 결제 데이터 관리 및 에러 처리까지 풀스택으로 개발하고 약 2년 5개월간 지속 운영·유지보수했습니다.',
+      '전시회 및 상담회 티켓 판매를 위한 PG 연동 결제 시스템입니다. 약 2년 5개월간 운영·유지보수했습니다.',
     category: ['Web', 'Payment'],
     tech: ['React', 'Next.js', 'Node.js', 'MySQL', 'PG 연동'],
     bullets: [
@@ -230,8 +240,9 @@ export const projects: Project[] = [
     period: '2021.10 ~ 2024.02',
     role: '기획 및 Flutter 개발',
     contribution: 100,
+    platform: 'APP',
     overview:
-      'MICE(전시·컨벤션) 시스템을 위한 관리자 전용 Flutter 앱입니다. 초기 기획과 아키텍처 설계 단계부터 참여해 앱 개발 전 과정을 단독으로 수행하고 배포했습니다. 클라이언트 요청사항 반영 및 서비스 안정성 확보를 위한 지속적 유지보수를 담당했습니다.',
+      'MICE(전시·컨벤션) 시스템을 위한 관리자 전용 Flutter 앱입니다. 기획부터 앱 개발 전 과정을 단독으로 수행하고 배포했습니다.',
     category: ['Mobile'],
     tech: ['Flutter', 'Dart'],
     bullets: [
@@ -243,3 +254,12 @@ export const projects: Project[] = [
     size: 'small',
   },
 ];
+
+// 회사별 그룹핑
+export const companiesOrder = ['레오핏테크', '레오소프트', '마이스허브'];
+
+export const projectsByCompany = companiesOrder.map((company) => ({
+  company,
+  period: projects.find((p) => p.company === company)?.period ?? '',
+  projects: projects.filter((p) => p.company === company),
+}));

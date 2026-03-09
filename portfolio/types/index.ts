@@ -12,6 +12,7 @@ export interface Project {
   tech: string[];
   bullets: string[];
   size: 'large' | 'small';
+  platform: 'WEB' | 'APP' | 'BOTH';
   link?: string;
 }
 
