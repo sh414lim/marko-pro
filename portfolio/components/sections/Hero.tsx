@@ -1,13 +1,14 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Marquee from '@/components/ui/Marquee';
 import { profile } from '@/data/profile';
 
 const MARQUEE_ITEMS = ['React', 'Flutter', 'Next.js', 'Node.js', 'TypeScript', 'Supabase'];
 
-const titleWords = ['FULL-', 'STACK', 'DEV'];
+// 직함 사이클 — FRONTEND 강조
+const ROLES = ['FRONTEND', 'FULLSTACK', 'MOBILE'];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -15,7 +16,16 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
 
+  const [roleIndex, setRoleIndex] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // 직함 3초마다 전환
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRoleIndex((i) => (i + 1) % ROLES.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -28,62 +38,97 @@ export default function Hero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const handleScrollDown = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section
       id="hero"
       ref={ref}
       className="relative min-h-screen flex flex-col bg-bg overflow-hidden"
-      style={{
-        backgroundImage:
-          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E\")",
-      }}
     >
-      {/* 패럴랙스 배경 레이어 */}
+      {/* 배경 장식 — 마우스 패럴랙스 */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          transform: `translate(${mousePos.x * 2}%, ${mousePos.y * 2}%)`,
-          transition: 'transform 0.3s ease',
-        }}
-      />
+        style={{ transform: `translate(${mousePos.x * 1.5}%, ${mousePos.y * 1.5}%)`, transition: 'transform 0.6s ease' }}
+      >
+        {/* 우상단 대형 원 */}
+        <motion.div
+          className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full border border-accent/10"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div
+          className="absolute -top-16 -right-16 w-[320px] h-[320px] rounded-full border border-accent/10"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+        />
+        {/* 좌하단 점 그리드 */}
+        <div className="absolute bottom-32 left-8 grid grid-cols-5 gap-3 opacity-20">
+          {Array.from({ length: 25 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="w-1 h-1 rounded-full bg-accent"
+              animate={{ opacity: [0.2, 1, 0.2] }}
+              transition={{ duration: 2, repeat: Infinity, delay: i * 0.08 }}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* 메인 콘텐츠 */}
       <motion.div
         className="flex-1 grid grid-cols-1 md:grid-cols-3 max-w-site mx-auto w-full px-6 md:px-20 pt-24 pb-16"
         style={{ opacity, y }}
       >
-        {/* 좌측: 타이틀 */}
+        {/* 좌측: 대형 타이틀 */}
         <div className="md:col-span-1 flex flex-col justify-between">
-          <motion.div
-            variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } } }}
-            initial="hidden"
-            animate="visible"
-          >
-            {titleWords.map((word) => (
-              <motion.h1
-                key={word}
-                className="font-display text-primary leading-none select-none"
-                style={{ fontSize: 'clamp(60px, 10vw, 140px)' }}
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-                }}
-              >
-                {word}
-              </motion.h1>
-            ))}
-          </motion.div>
+          <div>
+            {/* 사이클링 직함 */}
+            <div className="mb-2 h-[clamp(60px,10vw,140px)] overflow-hidden relative">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={ROLES[roleIndex]}
+                  className="font-display leading-none select-none block"
+                  style={{
+                    fontSize: 'clamp(44px, 7vw, 100px)',
+                    color: roleIndex === 0 ? '#1D4ED8' : 'transparent',
+                    WebkitTextStroke: roleIndex !== 0 ? '1px #0A0F1E' : undefined,
+                  }}
+                  initial={{ y: 60, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -60, opacity: 0 }}
+                  transition={{ duration: 0.45, ease: 'easeInOut' }}
+                >
+                  {ROLES[roleIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+
+            {/* DEV — 고정 */}
+            <motion.h1
+              className="font-display text-primary leading-none select-none"
+              style={{ fontSize: 'clamp(60px, 10vw, 140px)' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              DEV.
+            </motion.h1>
+
+            {/* 언더라인 애니메이션 */}
+            <motion.div
+              className="h-1 bg-accent mt-4"
+              initial={{ width: 0 }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
+            />
+          </div>
 
           {/* 에디토리얼 넘버링 */}
           <motion.p
-            className="font-mono text-6xl md:text-7xl text-primary/10 font-bold leading-none mt-8 md:mt-0"
+            className="font-mono text-primary/10 font-bold leading-none mt-8 md:mt-0"
+            style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            transition={{ delay: 0.8 }}
           >
             #001
           </motion.p>
@@ -94,14 +139,38 @@ export default function Hero() {
           className="md:col-span-2 flex flex-col justify-center md:pl-16 mt-12 md:mt-0"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
+          transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
         >
-          <p className="font-mono text-xs text-accent tracking-widest mb-4">PORTFOLIO 2026</p>
-          <h2 className="font-korean font-bold text-primary leading-tight mb-2"
-            style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}>
+          <motion.p
+            className="font-mono text-xs text-accent tracking-widest mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+          >
+            PORTFOLIO 2026
+          </motion.p>
+
+          <h2
+            className="font-korean font-bold text-primary leading-tight mb-2"
+            style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
+          >
             {profile.name}
           </h2>
-          <p className="font-korean text-lg text-muted mb-6">{profile.role}</p>
+
+          {/* 직함 뱃지 */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {['Frontend', 'Flutter', 'Node.js'].map((tag, i) => (
+              <motion.span
+                key={tag}
+                className="font-mono text-xs border border-accent/40 text-accent px-3 py-1"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8 + i * 0.1 }}
+              >
+                {tag}
+              </motion.span>
+            ))}
+          </div>
 
           <div className="w-12 h-0.5 bg-accent mb-6" />
 
@@ -110,7 +179,12 @@ export default function Hero() {
           </p>
 
           {/* CTA 버튼 */}
-          <div className="flex gap-4 flex-wrap">
+          <motion.div
+            className="flex gap-4 flex-wrap"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.0 }}
+          >
             <a
               href="#work"
               onClick={(e) => {
@@ -127,7 +201,7 @@ export default function Hero() {
             >
               CONTACT
             </a>
-          </div>
+          </motion.div>
         </motion.div>
       </motion.div>
 
@@ -136,11 +210,11 @@ export default function Hero() {
 
       {/* 스크롤 인디케이터 */}
       <motion.button
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator"
-        onClick={handleScrollDown}
+        className="absolute bottom-20 left-1/2 scroll-indicator flex flex-col items-center gap-1"
+        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1.4 }}
         aria-label="아래로 스크롤"
       >
         <span className="font-mono text-xs text-muted tracking-widest">↓ SCROLL</span>
